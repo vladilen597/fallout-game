@@ -12,7 +12,8 @@ const Terrain = () => {
     const vertices = geometry.attributes.position.array
 
     for (let i = 0; i < vertices.length; i += 3) {
-      vertices[i + 2] = noise.noise(vertices[i] / 20, vertices[i + 1] / 20) * 2
+      vertices[i + 2] =
+        noise.noise(vertices[i] / 30, vertices[i + 1] / 30) * 0.5
     }
 
     geometry.attributes.position.needsUpdate = true
@@ -26,7 +27,7 @@ const Terrain = () => {
       receiveShadow
       castShadow
       onClick={() => console.log('hit')}
-      onPointerMissed={() => console.log('hit')}
+      onPointerMissed={() => console.log('miss')}
     >
       <planeGeometry args={[100, 100, 100, 100]} />
       <meshStandardMaterial color='green' />

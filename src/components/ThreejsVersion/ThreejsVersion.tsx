@@ -1,10 +1,15 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useThree } from '@react-three/fiber'
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { Physics } from '@react-three/cannon'
 import Camera from './Camera/Camera.tsx'
 import * as THREE from 'three'
 import Box from './Box/Box.tsx'
 import Terrain from './Terrain/Terrain.tsx'
+import { Lensflare, LensflareElement } from 'three-stdlib'
+import Lightning from './Lightning/Lightning.tsx'
+import { Grid } from '@react-three/drei'
+import PlayerIcon from './PlayerIcon/PlayerIcon.tsx'
+import House from './House/House.tsx'
 
 const ThreejsVersion = () => {
   const [startPosition, setStartPosition] = useState([0, 0.5, 0])
@@ -23,16 +28,16 @@ const ThreejsVersion = () => {
         <Canvas
           style={{ height: '100vh', width: '100vw' }}
           camera={{
-            position: [0, 7, 0],
-            fov: 100,
-            rotation: [Math.PI / 4, 0, 0],
+            position: [0, 20, 15],
+            fov: 110,
+            rotation: [Math.PI / 4, Math.PI / 4, 0],
           }}
           shadows
         >
           <Camera />
-          <ambientLight intensity={1} color='#fff' castShadow />
+          <ambientLight intensity={1} color='#fff' />
           <directionalLight
-            position={[1, 2, 0]}
+            position={[100, 100, 0]}
             intensity={2}
             castShadow
             color='#ffd27f'
@@ -45,7 +50,7 @@ const ThreejsVersion = () => {
             shadow-camera-bottom={-10}
           />
           <Physics gravity={[0, -9.81, 0]} iterations={10}>
-            {/* <Grid infiniteGrid /> */}
+            <Grid infiniteGrid />
             {/* <PlayerIcon
               ref={playerRef}
               position={position}
@@ -54,10 +59,10 @@ const ThreejsVersion = () => {
               castShadow
               receiveShadow
             /> */}
-            <Box />
+            {/* <Box /> */}
             <Terrain />
           </Physics>
-
+          <House />
           <color attach='background' args={['#c6fcff']} />
         </Canvas>
       </Suspense>

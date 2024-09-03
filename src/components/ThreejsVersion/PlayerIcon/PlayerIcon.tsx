@@ -1,6 +1,6 @@
 import React from 'react'
 import playerIcon from './images/head.png'
-import { useFrame, useLoader } from '@react-three/fiber'
+import { useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useSpring, animated } from '@react-spring/three'
 
@@ -13,15 +13,16 @@ const PlayerIcon = React.forwardRef(({ startPosition, position }: any, ref) => {
     to: { x: position[0] },
   })
 
-  useFrame(() => {
-    // if (!ref.current) return
-    // if (targetPositionX > ref.current.position.x) {
-    //   ref.current.position.x += 0.001
-    // }
-    // if (targetPositionZ > ref.current.position.z) {
-    //   ref.current.position.z += 0.001
-    // }
-  })
+  // useFrame(() => {
+  //   if (!ref.current) return
+  //   const targetPositionZ = 0 // Replace 0 with the actual target position
+  //   if (x.get() > ref.current.position.x) {
+  //     ref.current.position.x += 0.001
+  //   }
+  //   if (targetPositionZ > ref.current.position.z) {
+  //     ref.current.position.z += 0.001
+  //   }
+  // })
 
   return (
     <animated.mesh
