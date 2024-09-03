@@ -1,0 +1,20 @@
+.inventory {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(10, 15%);
+  grid-template-rows: repeat(10, 15%);
+
+  .inventory__item {
+    background-repeat: no-repeat;
+    background-position-x: center;
+    border: 1px solid rgba(31, 161, 90, 1);
+    background-size: contain;
+    .inventory__name {
+      margin: 0;
+      text-shadow: 0px 0px 10px #000;
+    }
+    .inventory__amount {
+      text-shadow: 0px 0px 10px #000;
+    }
+  }
+}
